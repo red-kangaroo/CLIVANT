@@ -1,0 +1,18 @@
+Bugs that will crash CLIVAN:
+
+-	Praying to Silva while on the 5th floor or the 6th floor in gloomy caves, DON'T DO IT. The earthquake bug still exists.
+
+- Wishing for a flaming sword results in a crash
+
+-	When editing the dungeon script files, one must presently specify GenerateWards to be true or false, otherwise the game will crash.
+
+
+Bugs that won't crash CLIVAN:
+
+-	It is known that certain hostile dolphins will follow the player to other levels
+
+
+Submit any bugs that occur to Warheck, or lampshade at www.attnam.com
+
+I would recommend keeping the AutoSave count at 1. Because I've had some crashes that's happened for no reason.
+
