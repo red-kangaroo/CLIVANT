@@ -714,13 +714,23 @@ coffin /* olterrain->decoration->olterraincontainer */
   Walkability = ETHEREAL;
   DigMessage = "You smash the coffin into pieces. The spirits are not happy.";
   CanBeDestroyed = true;
-  MainMaterialConfig == FIR_WOOD;
+  MainMaterialConfig == MARBLE;
   NameSingular = "coffin";
-  BitmapPos = 16, 272;
-  SitMessage = "The coffin is cold  to sit on.";
+  SitMessage = "The coffin is cold to sit upon.";
   StorageVolume = 100000;
+  IsAbstract = true;
   AttachedGod = MORTIFER;
   LeftOverItems == NaturalMaterialForm { MainMaterial = 0 { Volume = 250:750; } Times = 1:2; }
+
+Config OPEN;
+  {
+    BitmapPos = 32, 160;
+    Adjective = "opened";
+  }
+Config CLOSED;
+  {
+    BitmapPos = 32, 144;
+  }
 }
 
 barwall
@@ -756,8 +766,9 @@ ironmaiden
 {
   LeftOverItems == NaturalMaterialForm { MainMaterial = 0 { Volume = 500:1500; } Times = 1:3; }	 CanBeDestroyed = true;
   DigMessage = "The iron maiden falls into pieces.";
-  MainMaterialConfig == IRON;
+  MainMaterialConfig == { 2, COPPER, IRON; }
+  MaterialConfigChances = { 2, 1, 250; }
   ShowMaterial = false;
-  NameSingular = "iron maiden";
+  NameSingular = "maiden";
   HPModifier = 250;
 }
