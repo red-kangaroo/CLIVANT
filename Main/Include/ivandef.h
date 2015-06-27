@@ -589,7 +589,7 @@ cv2 SILHOUETTE_SIZE(48, 64);
 
 #define MAX_PRICE 2147483647L
 
-#define PERMANENT 0xFFFF
+#define PERMANENT -1
 
 #define MISSED 0
 #define HIT 1
