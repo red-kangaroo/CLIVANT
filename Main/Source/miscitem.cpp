@@ -291,7 +291,7 @@ void scrollofchangematerial::FinishReading(character* Reader)
     else
       ADD_MESSAGE("Suddenly your %s are consumed in roaring magical flames.", Item[0]->CHAR_NAME(PLURAL));
 
-    if(TempMaterial->GetIntelligenceRequirement() + 5 > Reader->GetAttribute(INTELLIGENCE) && !game::WizardModeIsActive())
+    if(TempMaterial->GetIntelligenceRequirement() * 2 > Reader->GetAttribute(INTELLIGENCE) && !game::WizardModeIsActive())
     {
       ADD_MESSAGE("But your mind is not yet strong enough to summon enough %s for the change.", TempMaterial->GetName(false, false).CStr());
       delete TempMaterial;
