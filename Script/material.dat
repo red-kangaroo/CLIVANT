@@ -49,7 +49,7 @@ material
   NaturalForm = lump;
   HardenedMaterial = NONE;
 	SoftenedMaterial = NONE;
-  IntelligenceRequirement = 0;
+  IntelligenceRequirement = 2;
   CommonFlags = IS_ABSTRACT|CAN_BE_WISHED|CAN_BE_MIRRORED;
   NameFlags = 0;
   CategoryFlags = 0;
@@ -72,6 +72,7 @@ solid
     NameStem = "valpurium";
     Flexibility = 4;
     AttachedGod = VALPURUS;
+    SoftenedMaterial = FLAWLESS_DIAMOND;
     IntelligenceRequirement = 50;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|IS_METAL|IS_SPARKLING;
@@ -86,6 +87,8 @@ solid
     Color = rgb16(180, 180, 180);
     NameStem = "gravel";
     AttachedGod = TERRA;
+    HardenedMaterial = MORAINE;
+    SoftenedMaterial = SAND;
     CommonFlags = Base&~CAN_BE_WISHED;
   }
 
@@ -97,6 +100,8 @@ solid
     Color = rgb16(100, 60, 30);
     NameStem = "moraine";
     DigProductMaterial = GRANITE;
+    HardenedMaterial = GRANITE;
+    SoftenedMaterial = GRAVEL;
     AttachedGod = TERRA;
     NaturalForm = stone;
     CommonFlags = Base&~CAN_BE_WISHED;
@@ -111,7 +116,8 @@ solid
     NameStem = "glass";
     Alpha = 150;
     AttachedGod = LEGIFER;
-    HardenedMaterial = ILLITHIUM;
+    HardenedMaterial = EBON_GLASS;
+    SoftenedMaterial = SAND;
     IntelligenceRequirement = 5;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
   }
@@ -126,7 +132,8 @@ solid
     Flexibility = 10;
     AttachedGod = SOPHOS;
     PriceModifier = 100;
-    HardenedMaterial = SPIDER_SILK;
+    HardenedMaterial = LEATHER;
+    SoftenedMaterial = PAPYRUS;
     IntelligenceRequirement = 5;
     CategoryFlags = Base|CAN_BE_TAILORED|IS_GOLEM_MATERIAL;
     InteractionFlags = CAN_BURN;
@@ -138,10 +145,11 @@ solid
     ConsumeType = CT_MISC_ORGANIC;
     Density = 200;
     Color = rgb16(80, 80, 176);
-    NameStem = "cloth";
+    NameStem = "wool cloth";
+    AdjectiveStem = "woolen";
     Flexibility = 15;
     AttachedGod = DULCIS;
-    HardenedMaterial = ANGEL_HAIR;
+    HardenedMaterial = NYMPH_HAIR;
     CategoryFlags = Base|CAN_BE_TAILORED|IS_GOLEM_MATERIAL;
     InteractionFlags = CAN_BURN;
   }
@@ -153,11 +161,12 @@ solid
     Density = 300;
     Color = rgb16(134, 108, 58);
     NameStem = "hessian cloth";
+    AdjectiveStem = "hessian";
     Flexibility = 15;
     AttachedGod = DULCIS;
-    HardenedMaterial = ANGEL_HAIR;
+    HardenedMaterial = LINEN_CLOTH;
+    SoftenedMaterial = FABRIC;
     CategoryFlags = Base|CAN_BE_TAILORED|IS_GOLEM_MATERIAL;
-    InteractionFlags = CAN_BURN;
   }
 
   Config MITHRIL;
@@ -170,9 +179,9 @@ solid
     NameStem = "mithril";
     Flexibility = 2;
     AttachedGod = SOPHOS;
-    HardenedMaterial = OCTIRON;
-		SoftenedMaterial = ARCANITE;
-    IntelligenceRequirement = 25;
+    HardenedMaterial = ADAMANT;
+    SoftenedMaterial = MOON_SILVER;
+    IntelligenceRequirement = 16;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|IS_METAL|IS_SPARKLING|IS_GOLEM_MATERIAL;
     InteractionFlags = Base&~CAN_DISSOLVE;
@@ -186,6 +195,8 @@ solid
     Color = rgb16(210, 210, 210);
     NameStem = "marble";
     AttachedGod = DULCIS;
+    HardenedMaterial = GRANITE;
+	SoftenedMaterial = LIMESTONE;
     NaturalForm = stone;
     IntelligenceRequirement = 5;
     CommonFlags = Base|IS_VALUABLE;
@@ -203,9 +214,9 @@ solid
     AdjectiveStem = "golden";
     Flexibility = 3;
     AttachedGod = MELLIS;
-    HardenedMaterial = RUBY;
-		SoftenedMaterial = LEAD;
-    IntelligenceRequirement = 30;
+    HardenedMaterial = DARK_GOLD;
+		SoftenedMaterial = ELECTRUM;
+    IntelligenceRequirement = 20;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|IS_METAL|IS_SPARKLING|IS_GOLEM_MATERIAL;
     InteractionFlags = Base&~CAN_DISSOLVE;
@@ -221,7 +232,8 @@ solid
     AdjectiveStem = "grassy";
     Flexibility = 15;
     AttachedGod = SILVA;
-    CommonFlags = Base&~CAN_BE_WISHED;
+    HardenedMaterial = DARK_GRASS;
+	SoftenedMaterial = DEAD_GRASS;
     BodyFlags = Base|CAN_REGENERATE|IS_ALIVE;
     InteractionFlags = CAN_BURN;
   }
@@ -251,6 +263,7 @@ Config DEAD_GRASS;
     Flexibility = 10;
     AttachedGod = SILVA;
     HardenedMaterial = HARDENED_LEATHER;
+    SoftenedMaterial = PARCHMENT;
     CategoryFlags = Base|CAN_BE_TAILORED|IS_GOLEM_MATERIAL;
     InteractionFlags = CAN_BURN;
   }
@@ -258,26 +271,31 @@ Config DEAD_GRASS;
   Config LEAF;
   {
     StrengthValue = 3;
-    ConsumeType = CT_MISC_ORGANIC;
+    ConsumeType = CT_FRUIT;
     Density = 500;
+    NutritionValue = 500;
     Color = rgb16(0, 160, 0);
-    NameStem = "leaf";
+    NameStem = "edible leaf";
+    AdjectiveStem = "edible";
     Flexibility = 10;
     AttachedGod = SILVA;
     HardenedMaterial = PALM_LEAF;
+    SoftenedMaterial = PLANT_FIBER;
     CategoryFlags = Base|CAN_BE_TAILORED|IS_GOLEM_MATERIAL;
     InteractionFlags = CAN_BURN;
   }
 
   Config FABRIC;
   {
-    StrengthValue = 5;
+    StrengthValue = 25;
     ConsumeType = CT_MISC_ORGANIC;
     Density = 200;
     Color = rgb16(176, 0, 0);
     NameStem = "expensive fabric";
     Flexibility = 15;
     AttachedGod = MELLIS;
+    HardenedMaterial = ELVEN_CLOTH;
+	SoftenedMaterial = HESSIAN_CLOTH;
     CategoryFlags = Base|CAN_BE_TAILORED|IS_GOLEM_MATERIAL;
     InteractionFlags = CAN_BURN;
   }
@@ -291,7 +309,7 @@ Config DEAD_GRASS;
     NameStem = "palm leaf";
     Flexibility = 10;
     AttachedGod = SILVA;
-    HardenedMaterial = NYMPH_HAIR;
+    HardenedMaterial = IRONBARK;
 		SoftenedMaterial = LEAF;
     CategoryFlags = Base|CAN_BE_TAILORED|IS_GOLEM_MATERIAL;
     InteractionFlags = CAN_BURN;
@@ -303,23 +321,26 @@ Config DEAD_GRASS;
     ConsumeType = CT_MINERAL;
     Density = 2000;
     Color = rgb16(128, 0, 0);
-    NameStem = "sulfur";
+    NameStem = "brimstone";
+    AdjectiveStem = "sulphuric";
     Flexibility = 3;
     AttachedGod = LORICATUS;
-    HardenedMaterial = TIN;
+    HardenedMaterial = GUN_POWDER;
+	SoftenedMaterial = SULPHURIC_ACID;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
   }
 
   Config UNICORN_HORN;
   {
-    StrengthValue = 200;
+    StrengthValue = 180;
     ConsumeType = CT_MISC_ORGANIC;
     Density = 2000;
     Color = rgb16(200, 200, 200);
     NameStem = "unicorn horn";
     AttachedGod = SEGES;
+    SoftenedMaterial = HORN;
     CommonFlags = Base|IS_VALUABLE;
-    IntelligenceRequirement = 20;
+    IntelligenceRequirement = 15;
   }
 
   Config DIAMOND;
@@ -332,8 +353,10 @@ Config DEAD_GRASS;
     NameStem = "diamond";
     Alpha = 175;
     AttachedGod = MELLIS;
+    HardenedMaterial = FLAWLESS_DIAMOND;
+	SoftenedMaterial = GLASS;
     NaturalForm = stone;
-    IntelligenceRequirement = 40;
+    IntelligenceRequirement = 25;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|IS_SPARKLING|IS_GOLEM_MATERIAL;
     InteractionFlags = Base&~CAN_DISSOLVE;
@@ -348,9 +371,11 @@ Config DEAD_GRASS;
     PriceModifier = 15000;
     NameStem = "flawless diamond";
     Alpha = 175;
-    AttachedGod = MELLIS;
+    AttachedGod = VALPURUS;
+    HardenedMaterial = DIAMOND;
+	SoftenedMaterial = BLACK_DIAMOND;
     NaturalForm = stone;
-    IntelligenceRequirement = 44;
+    IntelligenceRequirement = 40;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|IS_SPARKLING|IS_GOLEM_MATERIAL;
     InteractionFlags = Base;
@@ -358,14 +383,16 @@ Config DEAD_GRASS;
 
   Config BLACK_DIAMOND;
   {
-    StrengthValue = 375;
+    StrengthValue = 400;
     ConsumeType = CT_MINERAL;
     Density = 3500;
     Color = rgb16(0, 0, 0);
-    PriceModifier = 15000;
+    PriceModifier = 20000;
     NameStem = "black diamond";
     Alpha = 175;
-    AttachedGod = MELLIS;
+    AttachedGod = MORTIFER;
+    HardenedMaterial = PSYPHER;
+	SoftenedMaterial = FLAWLESS_DIAMOND;
     NaturalForm = stone;
     IntelligenceRequirement = 50;
     CommonFlags = Base|IS_VALUABLE;
@@ -377,14 +404,15 @@ Config DEAD_GRASS;
   {
     StrengthValue = 600;
     ConsumeType = CT_MINERAL;
-    Density = 3500;
+    Density = 7500;
     Color = rgb16(180, 50, 50);
-    PriceModifier = 15000;
+    PriceModifier = 25000;
     NameStem = "psypher";
     Alpha = 200;
     AttachedGod = MORTIFER;
+    SoftenedMaterial = DUST;
     NaturalForm = stone;
-    IntelligenceRequirement = 150;
+    IntelligenceRequirement = 90;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base;
     InteractionFlags = Base;
@@ -399,8 +427,9 @@ Config DEAD_GRASS;
     PriceModifier = 1000;
     NameStem = "silver";
     AttachedGod = MELLIS;
-    HardenedMaterial = SAPPHIRE;
-    IntelligenceRequirement = 30;
+    HardenedMaterial = MOON_SILVER;
+	SoftenedMaterial = ELECTRUM;
+    IntelligenceRequirement = 15;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|IS_METAL|IS_SPARKLING|IS_GOLEM_MATERIAL;
     InteractionFlags = Base&~CAN_DISSOLVE;
@@ -417,8 +446,9 @@ Config DEAD_GRASS;
     Alpha = 200;
     AttachedGod = MELLIS;
     NaturalForm = stone;
-    HardenedMaterial = DIAMOND;
-    IntelligenceRequirement = 35;
+    HardenedMaterial = STAR_SAPPHIRE;
+	SoftenedMaterial = QUARTZITE;
+    IntelligenceRequirement = 20;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|IS_SPARKLING|IS_GOLEM_MATERIAL;
     InteractionFlags = Base&~CAN_DISSOLVE;
@@ -436,7 +466,8 @@ Config DEAD_GRASS;
     AttachedGod = MELLIS;
     NaturalForm = stone;
     HardenedMaterial = DIAMOND;
-    IntelligenceRequirement = 35;
+    SoftenedMaterial = QUARTZITE;
+    IntelligenceRequirement = 20;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|IS_SPARKLING|IS_GOLEM_MATERIAL;
     InteractionFlags = Base;
@@ -453,8 +484,9 @@ Config DEAD_GRASS;
     Alpha = 200;
     AttachedGod = MELLIS;
     NaturalForm = stone;
-    HardenedMaterial = DIAMOND;
-    IntelligenceRequirement = 35;
+    HardenedMaterial = FIRE_RUBY;
+    SoftenedMaterial = QUARTZITE;
+    IntelligenceRequirement = 20;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|IS_SPARKLING|IS_GOLEM_MATERIAL;
     InteractionFlags = Base&~CAN_DISSOLVE;
@@ -469,8 +501,8 @@ Config DEAD_GRASS;
     PriceModifier = 30;
     NameStem = "bronze";
     AttachedGod = LORICATUS;
-    HardenedMaterial = IRON;
-		SoftenedMaterial = COPPER;
+    HardenedMaterial = DEEP_BRONZE;
+		SoftenedMaterial = BRASS;
     CategoryFlags = Base|IS_METAL|IS_GOLEM_MATERIAL;
   }
 
@@ -483,7 +515,7 @@ Config DEAD_GRASS;
     PriceModifier = 20;
     NameStem = "copper";
     AttachedGod = LORICATUS;
-    HardenedMaterial = BRONZE;
+    HardenedMaterial = BRASS;
 		SoftenedMaterial = TIN;
     CategoryFlags = Base|IS_METAL|IS_GOLEM_MATERIAL;
   }
@@ -510,7 +542,8 @@ Config DEAD_GRASS;
     NameStem = "spider silk";
     Flexibility = 20;
     AttachedGod = SOPHOS;
-    IntelligenceRequirement = 40;
+    SoftenedMaterial = ANGEL_HAIR;
+    IntelligenceRequirement = 30;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|CAN_BE_TAILORED;
     InteractionFlags = CAN_BURN;
@@ -525,7 +558,9 @@ Config DEAD_GRASS;
     NameStem = "kevlar";
     Flexibility = 15;
     AttachedGod = LORICATUS;
-    IntelligenceRequirement = 35;
+    HardenedMaterial = NYLON;
+	SoftenedMaterial = NANO_FIBER;
+    IntelligenceRequirement = 20;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|CAN_BE_TAILORED;
   }
@@ -539,8 +574,8 @@ Config DEAD_GRASS;
     NameStem = "ommel hair";
     Flexibility = 15;
     AttachedGod = SILVA;
-    HardenedMaterial = PHOENIX_FEATHER;
-		SoftenedMaterial = TROLL_HIDE;
+    HardenedMaterial = ANGEL_HAIR;
+		SoftenedMaterial = NYMPH_HAIR;
     IntelligenceRequirement = 10;
     CommonFlags = Base|IS_VALUABLE;
     NameFlags = Base|USE_AN;
@@ -573,9 +608,9 @@ Config DEAD_GRASS;
     NameStem = "troll hide";
     Flexibility = 5;
     AttachedGod = SILVA;
-    HardenedMaterial = OMMEL_HAIR;
+    HardenedMaterial = DRAGON_HIDE;
 		SoftenedMaterial = HARDENED_LEATHER;
-    IntelligenceRequirement = 5;
+    IntelligenceRequirement = 7;
     CategoryFlags = Base|CAN_BE_TAILORED;
     InteractionFlags = CAN_BURN;
   }
@@ -589,7 +624,8 @@ Config DEAD_GRASS;
     NameStem = "nymph hair";
     Flexibility = 20;
     AttachedGod = SILVA;
-    HardenedMaterial = TROLL_HIDE;
+    HardenedMaterial = OMMEL_HAIR;
+    SoftenedMaterial = CLOTH;
     IntelligenceRequirement = 5;
     CategoryFlags = Base|CAN_BE_TAILORED|IS_GOLEM_MATERIAL;
     InteractionFlags = CAN_BURN;
@@ -604,7 +640,9 @@ Config DEAD_GRASS;
     NameStem = "angel hair";
     Flexibility = 25;
     AttachedGod = DULCIS;
-    IntelligenceRequirement = 35;
+    HardenedMaterial = SPIDER_SILK;
+	SoftenedMaterial = OMMEL_HAIR;
+    IntelligenceRequirement = 25;
     CommonFlags = Base|IS_VALUABLE;
     NameFlags = Base|USE_AN;
     CategoryFlags = Base|CAN_BE_TAILORED;
@@ -620,9 +658,9 @@ Config DEAD_GRASS;
     NameStem = "phoenix feather";
     Flexibility = 30;
     AttachedGod = SILVA;
-    HardenedMaterial = DRAGON_HIDE;
-		SoftenedMaterial = OMMEL_HAIR;
-    IntelligenceRequirement = 20;
+    HardenedMaterial = GOLDEN_EAGLE_FEATHER;
+		SoftenedMaterial = GRIFFON_FEATHER;
+    IntelligenceRequirement = 15;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|CAN_BE_TAILORED|IS_GOLEM_MATERIAL;
   }
@@ -636,7 +674,8 @@ Config DEAD_GRASS;
     NameStem = "golden eagle feather";
     Flexibility = 25;
     AttachedGod = VALPURUS;
-    IntelligenceRequirement = 50;
+    /* magical, no softening */
+    IntelligenceRequirement = 45;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|CAN_BE_TAILORED;
     InteractionFlags = Base&~CAN_DISSOLVE;
@@ -651,6 +690,7 @@ Config DEAD_GRASS;
     NameStem = "ice";
     Alpha = 150;
     AttachedGod = TERRA;
+    SoftenedMaterial = WATER;
     NaturalForm = stone;
     NameFlags = Base|USE_AN;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
@@ -665,8 +705,8 @@ Config DEAD_GRASS;
     NameStem = "dragon hide";
     Flexibility = 5;
     AttachedGod = SILVA;
-    IntelligenceRequirement = 35;
-		SoftenedMaterial = PHOENIX_FEATHER;
+    IntelligenceRequirement = 30;
+		SoftenedMaterial = TROLL_HIDE;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|CAN_BE_TAILORED|IS_GOLEM_MATERIAL;
     InteractionFlags = Base&~CAN_DISSOLVE;
@@ -676,13 +716,14 @@ Config DEAD_GRASS;
   {
     StrengthValue = 180;
     ConsumeType = CT_METAL;
-    Density = 800;
+    Density = 600;
     Color = rgb16(224, 224, 120);
     PriceModifier = 2000;
     NameStem = "arcanite";
     AttachedGod = SOPHOS;
     Flexibility = 3;
-    HardenedMaterial = MITHRIL;
+    HardenedMaterial = URU;
+    SoftenedMaterial = MAGIC_LIQUID;
     IntelligenceRequirement = 20;
     CommonFlags = Base|IS_VALUABLE;
     NameFlags = Base|USE_AN;
@@ -698,8 +739,9 @@ Config DEAD_GRASS;
     Color = rgb16(200, 200, 240);
     PriceModifier = 5000;
     NameStem = "illithium";
-    AttachedGod = LEGIFER;
-    IntelligenceRequirement = 25;
+    AttachedGod = INFUSCOR;
+    SoftenedMaterial = EBON_GLASS;
+    IntelligenceRequirement = 20;
     CommonFlags = Base|IS_VALUABLE;
     NameFlags = Base|USE_AN;
     CategoryFlags = Base|IS_METAL|IS_GOLEM_MATERIAL;
@@ -802,8 +844,9 @@ Config DEAD_GRASS;
     NameStem = "ebony";
     AttachedGod = SILVA;
     NaturalForm = stick;
+    HardenedMaterial = KAURI_WOOD;
 		SoftenedMaterial = TEAK_WOOD;
-    IntelligenceRequirement = 10;
+    IntelligenceRequirement = 6;
     CommonFlags = Base|IS_VALUABLE;
     NameFlags = Base|USE_AN;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
@@ -811,30 +854,32 @@ Config DEAD_GRASS;
 	
 	Config KAURI_WOOD;
   {
-    StrengthValue = 60;
+    StrengthValue = 70;
     ConsumeType = CT_MISC_ORGANIC;
     Density = 800;
     Color = rgb16(140, 92, 42);
     NameStem = "kauri";
     AttachedGod = SILVA;
     NaturalForm = stick;
-		SoftenedMaterial = TEAK_WOOD;
-    IntelligenceRequirement = 10;
+    HardenedMaterial = RATA_WOOD;
+		SoftenedMaterial = EBONY_WOOD;
+    IntelligenceRequirement = 8;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
   }
 	
 	Config RATA_WOOD;
   {
-    StrengthValue = 70;
+    StrengthValue = 75;
     ConsumeType = CT_MISC_ORGANIC;
     Density = 900;
     Color = rgb16(166, 44, 24);
     NameStem = "rata";
     AttachedGod = SILVA;
     NaturalForm = stick;
+    HardenedMaterial = SIDGURE_WOOD;
 		SoftenedMaterial = KAURI_WOOD;
-    IntelligenceRequirement = 15;
+    IntelligenceRequirement = 10;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
   }
@@ -849,8 +894,8 @@ Config DEAD_GRASS;
     NameStem = "octiron";
     AttachedGod = SOPHOS;
     Flexibility = 2;
-		SoftenedMaterial = MITHRIL;
-    IntelligenceRequirement = 40;
+		SoftenedMaterial = MAGICAL_AIR;
+    IntelligenceRequirement = 30;
     CommonFlags = Base|IS_VALUABLE;
     NameFlags = Base|USE_AN;
     CategoryFlags = Base|IS_METAL|IS_GOLEM_MATERIAL;
@@ -872,7 +917,7 @@ Config DEAD_GRASS;
     PriceModifier = 8000;
     HardenedMaterial = GREEN_CRYSTAL;
 		SoftenedMaterial = PURPLE_CRYSTAL;
-    IntelligenceRequirement = 20;
+    IntelligenceRequirement = 15;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|IS_SPARKLING|IS_GOLEM_MATERIAL;
     InteractionFlags = Base&~CAN_DISSOLVE;
@@ -892,7 +937,8 @@ Config DEAD_GRASS;
     NaturalForm = stone;
     PriceModifier = 8000;
     HardenedMaterial = BLUE_CRYSTAL;
-    IntelligenceRequirement = 20;
+    SoftenedMaterial = ROCK_CRYSTAL;
+    IntelligenceRequirement = 15;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|IS_SPARKLING|IS_GOLEM_MATERIAL;
     InteractionFlags = Base&~CAN_DISSOLVE;
@@ -910,9 +956,10 @@ Config DEAD_GRASS;
     AttachedGod = TERRA;
     Emitation = rgb24(135, 155, 135);
     NaturalForm = stone;
+    HardenedMaterial = SUN_CRYSTAL;
 		SoftenedMaterial = BLUE_CRYSTAL;
     PriceModifier = 8000;
-    IntelligenceRequirement = 20;
+    IntelligenceRequirement = 15;
     CommonFlags = Base|IS_VALUABLE;
     CategoryFlags = Base|IS_SPARKLING|IS_GOLEM_MATERIAL;
     InteractionFlags = Base&~CAN_DISSOLVE;
@@ -920,14 +967,15 @@ Config DEAD_GRASS;
 
   Config SUN_CRYSTAL;
   {
-    StrengthValue = 150;
+    StrengthValue = 160;
     ConsumeType = CT_MINERAL;
     Density = 2000;
     Color = rgb16(224, 224, 0);
-    NameStem = "sun light crystal";
+    NameStem = "sunlight crystal";
     AdjectiveStem = "crystal";
     Alpha = 150;
     AttachedGod = TERRA;
+    SoftenedMaterial = GREEN_CRYSTAL;
     Emitation = rgb24(160, 160, 160);
     NaturalForm = stone;
     PriceModifier = 8000;
@@ -947,6 +995,7 @@ Config DEAD_GRASS;
     AttachedGod = TERRA;
     NaturalForm = stone;
     HardenedMaterial = LIME_STONE;
+    SoftenedMaterial = SAND;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
   }
 
@@ -959,23 +1008,8 @@ Config DEAD_GRASS;
     NameStem = "limestone";
     AttachedGod = TERRA;
     NaturalForm = stone;
-    HardenedMaterial = CALCITE;
-		SoftenedMaterial = SAND_STONE;
-    CategoryFlags = Base|IS_GOLEM_MATERIAL;
-  }
-
-  Config CALCITE;
-  {
-    StrengthValue = 35;
-    ConsumeType = CT_MINERAL;
-    Density = 2700;
-    Color = rgb16(180, 180, 200);
-    NameStem = "calcite";
-    AttachedGod = TERRA;
-    NaturalForm = stone;
     HardenedMaterial = OBSIDIAN;
-		SoftenedMaterial = LIME_STONE;
-    Alpha = 140;
+		SoftenedMaterial = SAND_STONE;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
   }
 
@@ -989,7 +1023,7 @@ Config DEAD_GRASS;
     AttachedGod = TERRA;
     NaturalForm = stone;
     HardenedMaterial = GNEISS;
-		SoftenedMaterial = CALCITE;
+		SoftenedMaterial = LIME_STONE;
     NameFlags = Base|USE_AN;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
   }
@@ -1045,7 +1079,7 @@ Config DEAD_GRASS;
     NameStem = "basalt";
     AttachedGod = TERRA;
     NaturalForm = stone;
-    HardenedMaterial = MILKY_QUARTZ;
+    HardenedMaterial = FLINT;
 		SoftenedMaterial = GRANITE;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
   }
@@ -1059,7 +1093,8 @@ Config DEAD_GRASS;
     NameStem = "basalt";
     AttachedGod = TERRA;
     NaturalForm = stone;
-    HardenedMaterial = MILKY_QUARTZ;
+    SoftenedMaterial = BASALT;
+        IntelligenceRequirement = 9;
     CategoryFlags = Base;
   }
 
@@ -1073,7 +1108,7 @@ Config DEAD_GRASS;
     AttachedGod = TERRA;
     NaturalForm = stone;
     HardenedMaterial = QUARTZITE;
-		SoftenedMaterial = BASALT;
+		SoftenedMaterial = GLASS;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
   }
 
@@ -1086,7 +1121,8 @@ Config DEAD_GRASS;
     NameStem = "flint";
     AttachedGod = TERRA;
     NaturalForm = stone;
-    HardenedMaterial = QUARTZITE;
+    HardenedMaterial = EXTRA_HARD_BASALT;
+	SoftenedMaterial = BASALT;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
   }
 
@@ -1099,7 +1135,7 @@ Config DEAD_GRASS;
     NameStem = "quartzite";
     AttachedGod = TERRA;
     NaturalForm = stone;
-    HardenedMaterial = PURPLE_CRYSTAL;
+    HardenedMaterial = ROSE_QUARTZ;
 		SoftenedMaterial = MILKY_QUARTZ;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
   }
@@ -1113,7 +1149,8 @@ Config DEAD_GRASS;
     NameStem = "amethyst";
     AttachedGod = TERRA;
     NaturalForm = stone;
-    HardenedMaterial = PURPLE_CRYSTAL;
+    HardenedMaterial = ROCK_CRYSTAL;
+    	SoftenedMaterial = GLASS;
     PriceModifier = 1000;
     IntelligenceRequirement = 5;
     Alpha = 160;
@@ -1130,7 +1167,8 @@ Config DEAD_GRASS;
     NameStem = "citrine";
     AttachedGod = TERRA;
     NaturalForm = stone;
-    HardenedMaterial = PURPLE_CRYSTAL;
+    HardenedMaterial = ROCK_CRYSTAL;
+    	SoftenedMaterial = GLASS;
     PriceModifier = 1000;
     IntelligenceRequirement = 5;
     Alpha = 180;
@@ -1146,7 +1184,8 @@ Config DEAD_GRASS;
     NameStem = "rose quartz";
     AttachedGod = TERRA;
     NaturalForm = stone;
-    HardenedMaterial = PURPLE_CRYSTAL;
+    HardenedMaterial = ROCK_CRYSTAL;
+    	SoftenedMaterial = QUARTZITE;
     PriceModifier = 1000;
     IntelligenceRequirement = 5;
     Alpha = 180;
@@ -1162,7 +1201,8 @@ Config DEAD_GRASS;
     NameStem = "jasper";
     AttachedGod = TERRA;
     NaturalForm = stone;
-    HardenedMaterial = PURPLE_CRYSTAL;
+    HardenedMaterial = ROCK_CRYSTAL;
+    	SoftenedMaterial = GLASS;
     PriceModifier = 1000;
     IntelligenceRequirement = 5;
     CategoryFlags = Base|IS_SPARKLING|IS_GOLEM_MATERIAL;
@@ -1178,6 +1218,7 @@ Config DEAD_GRASS;
     AttachedGod = TERRA;
     NaturalForm = stone;
     HardenedMaterial = PURPLE_CRYSTAL;
+    	SoftenedMaterial = QUARTZITE;
     PriceModifier = 500;
     IntelligenceRequirement = 5;
     Alpha = 140;
@@ -1195,6 +1236,7 @@ Config DEAD_GRASS;
     AttachedGod = TERRA;
     NaturalForm = stone;
     HardenedMaterial = PURPLE_CRYSTAL;
+    	SoftenedMaterial = GLASS;
     PriceModifier = 1000;
     IntelligenceRequirement = 5;
     Alpha = 180;
@@ -1203,7 +1245,7 @@ Config DEAD_GRASS;
 
   Config DARK_GRASS;
   {
-    StrengthValue = 2;
+    StrengthValue = 3;
     ConsumeType = CT_MISC_ORGANIC;
     Density = 100;
     Color = rgb16(75, 100, 75);
@@ -1218,15 +1260,15 @@ Config DEAD_GRASS;
 
   Config LEAD;
   {
-    StrengthValue = 110;
+    StrengthValue = 90;
     ConsumeType = CT_METAL;
-    Density = 11340;
+    Density = 12000;
     Color = rgb16(230, 230, 230);
     PriceModifier = 30;
     NameStem = "lead";
     Flexibility = 2;
     AttachedGod = LORICATUS;
-    HardenedMaterial = ADAMANT;
+    HardenedMaterial = CHTHONIC_LEAD;
     IntelligenceRequirement = 7;
     CommonFlags = Base;
     CategoryFlags = Base|IS_METAL|IS_GOLEM_MATERIAL;
@@ -1242,7 +1284,7 @@ Config DEAD_GRASS;
     NameStem = "black granite";
     AttachedGod = TERRA;
     NaturalForm = stone;
-    HardenedMaterial = MILKY_QUARTZ;
+    HardenedMaterial = BLACK_DIAMOND;
 		SoftenedMaterial = GRANITE;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
   }
@@ -1257,8 +1299,61 @@ Config DEAD_GRASS;
     Flexibility = 10;
     AttachedGod = SILVA;
     HardenedMaterial = HARDENED_LEATHER;
+    SoftenedMaterial = LEATHER;
     CategoryFlags = Base|CAN_BE_TAILORED|IS_GOLEM_MATERIAL;
     InteractionFlags = CAN_BURN;
+  }
+  
+  Config BONE;
+  {
+    StrengthValue = 40;
+    Density = 2000;
+    ConsumeType = CT_BONE;
+    Color = rgb16(210, 210, 210);
+    NutritionValue = 500;
+    NameStem = "bone";
+    ConsumeEndMessage = CEM_BONE;
+    AttachedGod = MORTIFER;
+    HardenedMaterial = WRAITH_BONE;
+    CategoryFlags = Base|IS_GOLEM_MATERIAL;
+    NaturalForm = bone;
+  }
+  
+    Config OMMEL_BONE;
+  {
+    StrengthValue = 250;
+    Flexibility = 4;
+    Density = 750;
+    ConsumeType = CT_BONE;
+    Color = rgb16(210, 210, 210);
+    NutritionValue = 1000;
+    NameStem = "ommel bone";
+    ConsumeEndMessage = CEM_BONE;
+    AttachedGod = MORTIFER;
+    HardenedMaterial = DRAGON_BONE;
+	SoftenedMaterial = WRAITH_BONE;
+    Effect = EFFECT_OMMEL_BONE;
+    ConsumeEndMessage = CEM_OMMEL_BONE;
+    NameFlags = Base|USE_AN;
+    CategoryFlags = Base|IS_GOLEM_MATERIAL;
+  }
+
+  Config OMMEL_TOOTH;
+  {
+    StrengthValue = 350;
+    Density = 5000;
+    ConsumeType = CT_BONE;
+    Color = rgb16(200, 200, 255);
+    NutritionValue = 1000;
+    NameStem = "ommel tooth";
+    ConsumeEndMessage = CEM_BONE;
+    AttachedGod = MORTIFER;
+    SoftenedMaterial = SHARK_TOOTH;
+    IntelligenceRequirement = 20;
+    Effect = EFFECT_OMMEL_BONE;
+    ConsumeEndMessage = CEM_OMMEL_BONE;
+    NameFlags = Base|USE_AN;
+    CategoryFlags = Base|IS_SPARKLING|IS_GOLEM_MATERIAL;
   }
 }
 
@@ -1278,6 +1373,7 @@ organic /* substances that spoil but are not flesh */
     NameStem = "banana flesh";
     Flexibility = 5;
     AttachedGod = SILVA;
+        SoftenedMaterial = PLANT_FIBER;
   }
 
   Config SCHOOL_FOOD;
@@ -1308,6 +1404,7 @@ organic /* substances that spoil but are not flesh */
     NameStem = "banana peel";
     Flexibility = 10;
     AttachedGod = SILVA;
+    SoftenedMaterial = PLANT_FIBER;
     NaturalForm = bananapeels;
     BodyFlags = Base|USE_MATERIAL_ATTRIBUTES;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
@@ -1324,6 +1421,7 @@ organic /* substances that spoil but are not flesh */
     NameStem = "kiwi flesh";
     Flexibility = 5;
     AttachedGod = SILVA;
+        SoftenedMaterial = PLANT_FIBER;
   }
 
   Config PINEAPPLE_FLESH;
@@ -1337,6 +1435,7 @@ organic /* substances that spoil but are not flesh */
     NameStem = "pineapple flesh";
     Flexibility = 5;
     AttachedGod = SILVA;
+        SoftenedMaterial = PLANT_FIBER;
   }
 
   Config PLANT_FIBER;
@@ -1349,6 +1448,7 @@ organic /* substances that spoil but are not flesh */
     Flexibility = 10;
     SpoilModifier = 20000;
     AttachedGod = MORTIFER;
+    HardenedMaterial = MUTANT_PLANT_FIBER;
     BodyFlags = Base|IS_ALIVE|CAN_REGENERATE;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
     InteractionFlags = CAN_BURN;
@@ -1356,33 +1456,18 @@ organic /* substances that spoil but are not flesh */
 
   Config MUTANT_PLANT_FIBER;
   {
-    StrengthValue = 7;
+    StrengthValue = 27;
     ConsumeType = CT_MISC_ORGANIC;
     Density = 500;
     Color = rgb16(111, 64, 37);
-    NameStem = "mutant plant fiber";
+    NameStem = "mutant fiber";
     Flexibility = 10;
     SpoilModifier = 10000;
     Emitation = rgb24(140, 100, 100);
     AttachedGod = SCABIES;
+    SoftenedMaterial = PLANT_FIBER;
     BodyFlags = Base|IS_ALIVE|IS_WARM|CAN_REGENERATE;
     InteractionFlags = CAN_BURN;
-  }
-
-  Config BONE;
-  {
-    StrengthValue = 40;
-    Density = 2000;
-    ConsumeType = CT_BONE;
-    Color = rgb16(210, 210, 210);
-    NutritionValue = 500;
-    NameStem = "bone";
-    ConsumeEndMessage = CEM_BONE;
-    SpoilModifier = 48000;
-    AttachedGod = MORTIFER;
-    HardenedMaterial = OMMEL_BONE;
-    CategoryFlags = Base|IS_GOLEM_MATERIAL;
-    NaturalForm = bone;
   }
 
   Config BREAD;
@@ -1424,7 +1509,7 @@ organic /* substances that spoil but are not flesh */
     NutritionValue = 20000;
     Color = rgb16(250, 158, 74);
     PriceModifier = 10000;
-    NameStem = "holy mango flesh";
+    NameStem = "sacred food";
     Flexibility = 10;
     AttachedGod = SILVA;
     Effect = EFFECT_HOLY_MANGO;
@@ -1480,43 +1565,6 @@ organic /* substances that spoil but are not flesh */
     NameFlags = Base|USE_AN;
     InteractionFlags = Base|EFFECT_IS_GOOD;
   }
-
-  Config OMMEL_BONE;
-  {
-    StrengthValue = 250;
-    Flexibility = 4;
-    Density = 750;
-    ConsumeType = CT_BONE;
-    Color = rgb16(210, 210, 210);
-    NutritionValue = 1000;
-    NameStem = "ommel bone";
-    ConsumeEndMessage = CEM_BONE;
-    SpoilModifier = 48000;
-    AttachedGod = MORTIFER;
-    Effect = EFFECT_OMMEL_BONE;
-    ConsumeEndMessage = CEM_OMMEL_BONE;
-    NameFlags = Base|USE_AN;
-    CategoryFlags = Base|IS_GOLEM_MATERIAL;
-    HardenedMaterial = OMMEL_TOOTH;
-  }
-
-  Config OMMEL_TOOTH;
-  {
-    StrengthValue = 375;
-    Density = 5000;
-    ConsumeType = CT_BONE;
-    Color = rgb16(200, 200, 255);
-    NutritionValue = 1000;
-    NameStem = "ommel tooth";
-    ConsumeEndMessage = CEM_BONE;
-    SpoilModifier = 48000;
-    AttachedGod = MORTIFER;
-    IntelligenceRequirement = 20;
-    Effect = EFFECT_OMMEL_BONE;
-    ConsumeEndMessage = CEM_OMMEL_BONE;
-    NameFlags = Base|USE_AN;
-    CategoryFlags = Base|IS_SPARKLING|IS_GOLEM_MATERIAL;
-  }
 }
 
 gas
@@ -1535,15 +1583,18 @@ gas
     NameStem = "air";
     Alpha = 150;
     AttachedGod = TERRA;
+    SoftenedMaterial = VACUUM_BLADE_AIR;
     NameFlags = Base|USE_AN;
   }
 
   Config MAGICAL_AIR;
   {
     Color = rgb16(180, 180, 255);
-    NameStem = "magical air";
+    NameStem = "ectoplasm";
     Alpha = 150;
     AttachedGod = SOPHOS;
+    HardenedMaterial = OCTIRON;
+	SoftenedMaterial = AIR;
     BodyFlags = Base|CAN_REGENERATE&~USE_MATERIAL_ATTRIBUTES;
   }
 
@@ -1571,7 +1622,7 @@ gas
   Config GHOST;
   {
     Color = rgb16(255, 255, 255);
-    NameStem = "ghost";
+    NameStem = "ectoplasm";
     Alpha = 150;
     AttachedGod = MORTIFER;
     BodyFlags = Base|CAN_REGENERATE&~USE_MATERIAL_ATTRIBUTES;
@@ -1583,6 +1634,7 @@ gas
     NameStem = "raw vapourized magic";
     Alpha = 200;
     AttachedGod = SOPHOS;
+    HardenedMaterial = MAGIC_LIQUID;
     Effect = EFFECT_MAGIC_MUSHROOM;
     BreatheMessage = "The air is filled with tiny magical bubbles.";
     StepInWisdomLimit = 10;
@@ -1591,7 +1643,7 @@ gas
   Config EVIL_WONDER_STAFF_VAPOUR;
   {
     Color = rgb16(200, 0, 0);
-    NameStem = "mysterious red gas";
+    NameStem = "unholy mist";
     Alpha = 200;
     AttachedGod = INFUSCOR;
     Effect = EFFECT_EVIL_WONDER_STAFF_VAPOUR;
@@ -1602,7 +1654,7 @@ gas
   Config GOOD_WONDER_STAFF_VAPOUR;
   {
     Color = rgb16(100, 100, 200);
-    NameStem = "mysterious blue gas";
+    NameStem = "hoyl mist";
     Alpha = 200;
     AttachedGod = SOPHOS;
     Effect = EFFECT_GOOD_WONDER_STAFF_VAPOUR;
@@ -1635,7 +1687,7 @@ gas
     StrengthValue = 1;
     Density = 10;
     Color = rgb16(180, 180, 255);
-    NameStem = "vacuum blade air";
+    NameStem = "vacuum";
     Alpha = 150;
     AttachedGod = TERRA;
     NameFlags = Base;
@@ -1681,7 +1733,9 @@ liquid
     Effect = EFFECT_PEPSI;
     ConsumeEndMessage = CEM_PEPSI;
     HitMessage = HM_PEPSI;
-    AttachedGod = MELLIS;
+    AttachedGod = MORTIFER;
+    HardenedMaterial = COKE;
+	SoftenedMaterial = WATER;
     RustModifier = 200;
     Acidicity = 10;
     PriceModifier = 1000;
@@ -1697,6 +1751,8 @@ liquid
     NameStem = "water";
     Alpha = 150;
     AttachedGod = TERRA;
+    HardenedMaterial = ICE;
+	SoftenedMaterial = STEAM;
   }
 
   Config HEALING_LIQUID;
@@ -1705,7 +1761,7 @@ liquid
     NutritionValue = 250;
     Color = rgb16(180, 0, 0);
     PriceModifier = 1500;
-    NameStem = "healing liquid";
+    NameStem = "healing potion";
     Effect = EFFECT_HEAL;
     ConsumeEndMessage = CEM_HEALING_LIQUID;
     HitMessage = HM_HEALING_LIQUID;
@@ -1816,7 +1872,7 @@ liquid
     StrengthValue = 1;
     NutritionValue = 100;
     Color = rgb16(128, 0, 128);
-    NameStem = "antidote liquid";
+    NameStem = "antidote";
     Effect = EFFECT_ANTIDOTE;
     ConsumeEndMessage = CEM_ANTIDOTE;
     HitMessage = HM_ANTIDOTE;
@@ -1918,7 +1974,7 @@ liquid
     StrengthValue = 150;
     NutritionValue = 50;
     Color = rgb16(100, 0, 0);
-    NameStem = "acidous blood";
+    NameStem = "caustic blood";
     Alpha = 175;
     Flexibility = 40;
     AttachedGod = CRUENTUS;
@@ -1940,6 +1996,8 @@ liquid
     Alpha = 150;
     Flexibility = 45;
     AttachedGod = SCABIES;
+    HardenedMaterial = SULFUR;
+	SoftenedMaterial = WATER;
     RustModifier = 400;
     Acidicity = 400;
     ConsumeWisdomLimit = 4;
@@ -2086,7 +2144,7 @@ liquid
     StrengthValue = 1;
     NutritionValue = 10;
     Color = rgb16(144, 144, 240);
-    NameStem = "mustard gas in liquid form";
+    NameStem = "mustard solution";
     Alpha = 150;
     AttachedGod = CRUENTUS;
     Effect = EFFECT_MUSTARD_GAS_LIQUID;
@@ -2193,7 +2251,7 @@ flesh
     HitMessage = HM_FROG_FLESH;
     StrengthValue = 10;
     Density = 2400;
-    NameStem = "Elpuri's flesh";
+    NameStem = "demigod flesh";
     Color = rgb16(60, 60, 60);
     AttachedGod = MORTIFER;
     NameFlags = Base|USE_AN;
@@ -2205,6 +2263,7 @@ flesh
   {
     NameStem = "human flesh";
     AttachedGod = MORTIFER;
+    HardenedMaterial = MUTANT_BUNNY_FLESH;
     CategoryFlags = Base|IS_GOLEM_MATERIAL;
   }
 
@@ -2242,6 +2301,7 @@ flesh
   {
     StrengthValue = 10;
     Density = 1800;
+    Effect = EFFECT_ESP;
     ConsumeWisdomLimit = 0;
     NameStem = "enner beast flesh";
     AttachedGod = DULCIS;
@@ -2265,7 +2325,7 @@ flesh
 
   Config MUTANT_ASS_FLESH;
   {
-    NameStem = "mutant ass flesh";
+    NameStem = "mutant flesh";
     Effect = EFFECT_POLYMORPH;
     EffectStrength = 6;
     Emitation = rgb24(140, 100, 100);
@@ -2436,7 +2496,7 @@ flesh
 
   Config ORC_FLESH;
   {
-    NameStem = "orc flesh";
+    NameStem = "orcish flesh";
     AttachedGod = MORTIFER;
     NutritionValue = 15;
     ConsumeWisdomLimit = 15;
@@ -2471,6 +2531,7 @@ flesh
   Config MUSHROOM_FLESH;
   {
     NameStem = "mushroom";
+    AdjectiveStem = "fungal";
     Density = 600;
     Effect = EFFECT_MUSHROOM;
     ConsumeWisdomLimit = 10;
@@ -2518,17 +2579,19 @@ flesh
 
   Config MUTANT_BUNNY_FLESH;
   {
-    NameStem = "mutant bunny flesh";
+    NameStem = "mutant flesh";
     Effect = EFFECT_POLYMORPH;
     EffectStrength = 6;
     Emitation = rgb24(140, 100, 100);
     ConsumeWisdomLimit = 8;
     AttachedGod = SCABIES;
+    HardenedMaterial = UNDEAD_FLESH;
+	SoftenedMaterial = HUMAN_FLESH;
   }
 
 Config MUTANT_HEDGEHOG_FLESH;
   {
-    NameStem = "mutant hedgehog flesh";
+    NameStem = "mutant flesh";
     Effect = EFFECT_POLYMORPH;
     EffectStrength = 6;
     Emitation = rgb24(100, 100, 140);
@@ -2553,7 +2616,8 @@ Config MUTANT_HEDGEHOG_FLESH;
 
   Config MAGIC_MUSHROOM_FLESH;
   {
-    NameStem = "magical mushroom";
+    NameStem = "magic mushroom";
+    AdjectiveStem = "fungal";
     Density = 600;
     Effect = EFFECT_MAGIC_MUSHROOM;
     ConsumeWisdomLimit = 10;
@@ -2571,7 +2635,7 @@ Config MUTANT_HEDGEHOG_FLESH;
 
   Config MIND_WORM_FLESH;
   {
-    NameStem = "sick spider flesh";
+    NameStem = "worm flesh";
     AttachedGod = SCABIES;
   }
 	
@@ -2603,6 +2667,7 @@ powder
     ExplosivePower = 15000;
     Flexibility = 35;
     AttachedGod = CRUENTUS;
+    SoftenedMaterial = SULFUR;
     CommonFlags = Base|IS_VALUABLE;
     InteractionFlags = CAN_EXPLODE;
   }
@@ -2617,6 +2682,8 @@ powder
     AdjectiveStem = "snowy";
     Flexibility = 40;
     AttachedGod = TERRA;
+    HardenedMaterial = ICE;
+	SoftenedMaterial = WATER;
     RainColor = rgb16(255, 255, 255);
   }
 
@@ -2630,6 +2697,8 @@ powder
     AdjectiveStem = "sandy";
     Flexibility = 40;
     AttachedGod = TERRA;
+    HardenedMaterial = SAND_STONE;
+	SoftenedMaterial = DUST;
   }
 }
 
@@ -2648,7 +2717,7 @@ ironalloy /* metals that rust */
     NameStem = "iron";
     RustModifier = 100;
     HardenedMaterial = STEEL;
-		SoftenedMaterial = BRONZE;
+		SoftenedMaterial = LEAD;
     IntelligenceRequirement = 5;
     NameFlags = Base|USE_AN;
   }
@@ -2665,7 +2734,7 @@ ironalloy /* metals that rust */
     RustModifier = 75;
     HardenedMaterial = METEORIC_STEEL;
 		SoftenedMaterial = IRON;
-    IntelligenceRequirement = 10;
+    IntelligenceRequirement = 7;
     CommonFlags = Base|IS_VALUABLE;
   }
 
@@ -2673,7 +2742,7 @@ ironalloy /* metals that rust */
   {
     StrengthValue = 150;
     ConsumeType = CT_METAL;
-    Density = 7000;
+    Density = 7500;
     Color = rgb16(160, 160, 160);
     PriceModifier = 250;
     NameStem = "meteoric steel";
@@ -2681,7 +2750,7 @@ ironalloy /* metals that rust */
     RustModifier = 50;
     HardenedMaterial = DAMASCUS_STEEL;
 		SoftenedMaterial = STEEL;
-    IntelligenceRequirement = 15;
+    IntelligenceRequirement = 10;
     CommonFlags = Base|IS_VALUABLE;
   }
 
@@ -2689,31 +2758,31 @@ ironalloy /* metals that rust */
   {
     StrengthValue = 175;
     ConsumeType = CT_METAL;
-    Density = 10000;
+    Density = 7500;
     Color = rgb16(80, 80, 80);
     PriceModifier = 500;
     NameStem = "damascus steel";
     AttachedGod = LORICATUS;
     RustModifier = 25;
-    HardenedMaterial = ADAMANT;
+    HardenedMaterial = STAINLESS_STEEL;
 		SoftenedMaterial = METEORIC_STEEL;
-    IntelligenceRequirement = 20;
+    IntelligenceRequirement = 12;
     CommonFlags = Base|IS_VALUABLE;
   }
 	
 	Config ADAMANT;
   {
-    StrengthValue = 350;
+    StrengthValue = 400;
     ConsumeType = CT_METAL;
-    Density = 5000;
+    Density = 10000;
     Color = rgb16(220, 220, 240);
     PriceModifier = 10000;
-    NameStem = "adamant";
+    NameStem = "adamantium";
     AdjectiveStem = "adamantine";
     AttachedGod = LORICATUS;
     RustModifier = 15;
-		IntelligenceRequirement = 40;
-		HardenedMaterial = VALPURIUM;
+		IntelligenceRequirement = 30;
+    SoftenedMaterial = STAINLESS_STEEL;
     CommonFlags = Base|IS_VALUABLE;
     NameFlags = Base|USE_AN;
     CategoryFlags = Base|IS_SPARKLING;
